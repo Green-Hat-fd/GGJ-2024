@@ -7,10 +7,14 @@ public class MovimGiocatRb : MonoBehaviour
 {
     Rigidbody rb;
 
-    [SerializeField] float velGiocat = 7.5f;
+    [SerializeField] float forzaMovim = 8.5f;
+    [SerializeField] float velMax = 7.5f;
     [Range(0, 1)]
     [SerializeField] float attritoNoInput = 5;
     [SerializeField] float potenzaSalto = 8.5f;
+    [Space(10)]
+    [SerializeField] float moltGravitaInDiscesa = 1.1f;
+    [SerializeField] float maxVelInDiscesa = 15f;
     float movimX;
     bool siMuove;
     
@@ -79,7 +83,7 @@ public class MovimGiocatRb : MonoBehaviour
 
 
         //Movimento orizzontale (semplice) del giocatore
-        rb.AddForce(muovi.normalized * velGiocat * 10f, ForceMode.Force);
+        rb.AddForce(muovi.normalized * forzaMovim * 10f, ForceMode.Force);
 
 
         #region Limitazione della velocita'
@@ -90,11 +94,20 @@ public class MovimGiocatRb : MonoBehaviour
 
 
         //Controllo se si accelera troppo, cioe' si supera la velocita'
-        if (velOrizz.magnitude >= velGiocat)
+        if (velOrizz.magnitude >= velMax)
         {
             //Limita la velocita' a quella prestabilita, riportandola al RigidBody
-            Vector3 limitazione = velOrizz.normalized * velGiocat * moltVelAria;
+            Vector3 limitazione = velOrizz.normalized * velMax * moltVelAria;
             rb.velocity = new Vector3(limitazione.x, rb.velocity.y, limitazione.z);
+        }
+
+
+        //Aumenta la gravita' quando il giocatore sta cadendo
+        if (rb.velocity.y < 0)
+        {
+            Vector3 _velDiscesa = velVert;
+            _velDiscesa.y = Mathf.Clamp(_velDiscesa.y * moltGravitaInDiscesa, -maxVelInDiscesa, 0);
+            rb.velocity = velOrizz + _velDiscesa;
         }
 
 
