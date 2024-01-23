@@ -278,6 +278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velGiocat: 8.5
-  attritoNoInput: 0.4
+  attritoNoInput: 0.8
   potenzaSalto: 8.5
   sogliaRilevaTerreno: 0.25
