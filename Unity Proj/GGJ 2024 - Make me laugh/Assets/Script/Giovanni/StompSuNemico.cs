@@ -15,6 +15,12 @@ public class StompSuNemico : MonoBehaviour
             Destroy(other.gameObject);
             rb.velocity = new Vector2(rb.velocity.x, RimbalzoSuNemico);
         }
+        
+        if(other.CompareTag("Jack"))
+        {
+            Destroy(other.gameObject);
+            rb.velocity = new Vector2(rb.velocity.x, RimbalzoSuNemico);
+        }
 
          if(other.CompareTag("Trampolino"))
         {
