@@ -29,6 +29,12 @@ public class MovimGiocatRb : MonoBehaviour
 
     bool hoSaltato = false;
 
+    [Space(20)]
+    [SerializeField] GameObject modello;
+    Transform modelloTr;
+    Vector3 rot;
+    [SerializeField] float velRotazione = 8.5f;
+
 
 
     private void Awake()
@@ -37,6 +43,9 @@ public class MovimGiocatRb : MonoBehaviour
         rb.freezeRotation = true;
 
         mezzaAltezzaGiocat = GetComponent<CapsuleCollider>().height / 2;
+
+        modelloTr = modello.transform;
+        rot = Vector3.up * 90.01f;
     }
 
     private void Update()
@@ -54,6 +63,21 @@ public class MovimGiocatRb : MonoBehaviour
 
         //Prende l'input di salto
         hoSaltato = Input.GetKey(KeyCode.Space);
+
+
+        //Ruota il giocatore verso dove si sta muovendo
+        if (movimX > 0)
+        {
+            rot = Vector3.up * 90.01f;    //A destra
+        }
+        if (movimX < 0)
+        {
+            rot = Vector3.up * -90.01f;    //A sinistra
+        }
+
+        modello.transform.rotation = Quaternion.RotateTowards(modello.transform.rotation,
+                                                              Quaternion.Euler(rot),
+                                                              Time.deltaTime * velRotazione * 20);
     }
 
     RaycastHit hitBase;
@@ -86,6 +110,7 @@ public class MovimGiocatRb : MonoBehaviour
         rb.AddForce(muovi.normalized * forzaMovim * 10f, ForceMode.Force);
 
 
+
         #region Limitazione della velocita'
 
         //Prende la velocita' orizzontale del giocatore
@@ -106,8 +131,11 @@ public class MovimGiocatRb : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             Vector3 _velDiscesa = velVert;
-            _velDiscesa.y = Mathf.Clamp(_velDiscesa.y * moltGravitaInDiscesa, -maxVelInDiscesa, 0);
-            rb.velocity = velOrizz + _velDiscesa;
+
+            _velDiscesa *= moltGravitaInDiscesa;
+            _velDiscesa.y = Mathf.Clamp(_velDiscesa.y, -maxVelInDiscesa, 0);
+
+            rb.velocity = velOrizz / moltGravitaInDiscesa + _velDiscesa;
         }
 
 
