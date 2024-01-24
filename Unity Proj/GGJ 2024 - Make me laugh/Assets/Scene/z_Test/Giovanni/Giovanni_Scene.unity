@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476031082732827302, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3476031082732827302, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476031082732827302, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.56378
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3476031082732827302, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -177,6 +177,18 @@ PrefabInstance:
     - target: {fileID: 3476031082732827302, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430242249045153346, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
+      propertyPath: Rimbalzo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430242249045153346, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
+      propertyPath: RimbalzoSuNemico
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430242249045153346, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
+      propertyPath: RimbalzoSuTrampolino
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
@@ -216,7 +228,7 @@ Transform:
   - {fileID: 1972291054}
   - {fileID: 1735654423}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &76716751
 GameObject:
@@ -433,7 +445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144070061}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -79.6, y: 1, z: -4}
+  m_LocalPosition: {x: -79.6, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -755,7 +767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924967731}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -67.55, y: 1, z: -4}
+  m_LocalPosition: {x: -67.55, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -796,7 +808,7 @@ Transform:
   - {fileID: 76716755}
   - {fileID: 1214677142}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214677138
 GameObject:
@@ -812,7 +824,7 @@ GameObject:
   - component: {fileID: 1214677139}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Trampolino
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1574,7 +1586,7 @@ Transform:
   m_Father: {fileID: 63823213}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1936682346212494275
+--- !u!1001 &1983349618
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1595,11 +1607,11 @@ PrefabInstance:
       objectReference: {fileID: 924967731}
     - target: {fileID: 1936682345657899991, guid: 5ed9b8f2498338246ae672df7a615c18, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1936682345657899991, guid: 5ed9b8f2498338246ae672df7a615c18, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -73.46
+      value: -75.37703
       objectReference: {fileID: 0}
     - target: {fileID: 1936682345657899991, guid: 5ed9b8f2498338246ae672df7a615c18, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1607,7 +1619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936682345657899991, guid: 5ed9b8f2498338246ae672df7a615c18, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1936682345657899991, guid: 5ed9b8f2498338246ae672df7a615c18, type: 3}
       propertyPath: m_LocalRotation.w
