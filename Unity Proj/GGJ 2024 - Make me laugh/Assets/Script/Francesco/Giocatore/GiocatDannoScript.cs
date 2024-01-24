@@ -8,8 +8,10 @@ public class GiocatDannoScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Se ha un nemico
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Nemico"))
         {
+            other.GetComponentInParent<NemicoMimo>().Danno();
+
             print("Bang!  -  Danno al nemico arrecato");
         }
     }

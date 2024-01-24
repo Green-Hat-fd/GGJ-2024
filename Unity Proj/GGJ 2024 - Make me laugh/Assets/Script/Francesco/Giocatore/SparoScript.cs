@@ -15,13 +15,13 @@ public class SparoScript : MonoBehaviour
     {
         Collider coll = collDaAttivare.GetComponent<Collider>();
         coll.isTrigger = true;
-        coll.enabled = true;
+        coll.enabled = false;
 
         ricaricaAttuale = 0;
 
         //Set del mouse al centro e nascosto
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
     
     void Update()
@@ -29,8 +29,17 @@ public class SparoScript : MonoBehaviour
         //Se preme il tasto e puo' sparare, spara
         if (Input.GetKeyDown(KeyCode.Mouse0) && possoSparare)
         {
-            collDaAttivare.SetActive(true);
+            collDaAttivare.GetComponent<Collider>().enabled = true;
             possoSparare = false;
+
+            print("SPARO");
+        }
+        else
+        {
+            if(ricaricaAttuale > 0.5f)
+            {
+                collDaAttivare.GetComponent<Collider>().enabled = false;
+            }
         }
         
 
