@@ -426,8 +426,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2debcf5631934b647a1990d1bbd67359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RimbalzoSuNemico: 0
-  RimbalzoSuTrampolino: 0
+  RimbalzoSuNemico: 5
+  RimbalzoSuTrampolino: 11
   rb: {fileID: 3476031082732827303}
 --- !u!1 &7034646216288648795
 GameObject:

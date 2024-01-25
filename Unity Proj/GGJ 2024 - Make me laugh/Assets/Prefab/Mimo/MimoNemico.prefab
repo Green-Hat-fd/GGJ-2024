@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proiettilePrefab: {fileID: 8633218801931939601, guid: 06446f5233cf0b34aaa43f8239461123, type: 3}
-  cooldown: 1
+  cooldown: 3
   puntoSparo: {fileID: 3918580968808184372}
   maxDistSparo: 10
   posizQuandoRide: {fileID: 3918580969603241112}
