@@ -23,6 +23,7 @@ public class NemicoMimo : MonoBehaviour
     [Header("—— Feedback ——")]
     [SerializeField] GameObject modello;
     Transform modelloTr;
+    [SerializeField] Collider collDaDisattivare;
     [SerializeField] Animator nemicoAnim;
 
 
@@ -53,9 +54,9 @@ public class NemicoMimo : MonoBehaviour
 
             // Imposta la rotazione dell'oggetto in base all'angolo calcolato
             Quaternion rotFinale = Quaternion.Euler(Vector3.up * angolo);
-            modello.transform.rotation = Quaternion.RotateTowards(modelloTr.rotation,
-                                                                  rotFinale,
-                                                                  Time.deltaTime * 700);
+            modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,
+                                                          rotFinale,
+                                                          Time.deltaTime * 700);
 
             sonoGirato = modelloTr.rotation == rotFinale;
 
@@ -71,13 +72,13 @@ public class NemicoMimo : MonoBehaviour
         if (!sonoArrabbiato)
         {
             //Si mette dietro nello sfondo
-            modello.transform.position = Vector3.MoveTowards(modelloTr.position,
-                                                             posizQuandoRide.position,
-                                                             Time.deltaTime * velQuandoRide);
+            modelloTr.position = Vector3.MoveTowards(modelloTr.position,
+                                                     posizQuandoRide.position,
+                                                     Time.deltaTime * velQuandoRide);
 
-            modello.transform.rotation = Quaternion.RotateTowards(modelloTr.rotation,
-                                                                  posizQuandoRide.rotation,
-                                                                  Time.deltaTime * velQuandoRide * 20);
+            modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,
+                                                          posizQuandoRide.rotation,
+                                                          Time.deltaTime * velQuandoRide * 20);
         }
     }
 
@@ -100,7 +101,10 @@ public class NemicoMimo : MonoBehaviour
         //Disattiva la possibilita' di sparare
         sonoArrabbiato = false;
 
-        //Feedback della risata in loop,
+        //Disattiva il collider
+        collDaDisattivare.enabled = false;
+
+        //Feedback della risata in loop
         //nemicoAnim.SetTrigger("Ridi");
     }
 

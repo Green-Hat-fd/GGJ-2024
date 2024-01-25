@@ -341,13 +341,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028f44579b9e8f6438c36f768625ac32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proiettilePrefab: {fileID: 0}
+  proiettilePrefab: {fileID: 8633218801931939601, guid: 06446f5233cf0b34aaa43f8239461123, type: 3}
   cooldown: 1
   puntoSparo: {fileID: 3918580968808184372}
   maxDistSparo: 10
   posizQuandoRide: {fileID: 3918580969603241112}
   velQuandoRide: 6.5
-  modello: {fileID: 8633218801931939601, guid: 06446f5233cf0b34aaa43f8239461123, type: 3}
+  modello: {fileID: 3918580969786944184}
+  collDaDisattivare: {fileID: 0}
   nemicoAnim: {fileID: 0}
 --- !u!1 &3918580969603241119
 GameObject:

@@ -41,5 +41,9 @@ public class AiDentiera : MonoBehaviour
         {
             CurrentPoint = PuntoB.transform;
         }
+
+
+        //Si gira verso dove sta andando
+        rb.transform.LookAt(CurrentPoint);
     }
 }
