@@ -348,7 +348,7 @@ MonoBehaviour:
   posizQuandoRide: {fileID: 3918580969603241112}
   velQuandoRide: 6.5
   modello: {fileID: 3918580969786944184}
-  collDaDisattivare: {fileID: 0}
+  collDaDisattivare: {fileID: 3918580969462006430}
   nemicoAnim: {fileID: 0}
 --- !u!1 &3918580969603241119
 GameObject:
