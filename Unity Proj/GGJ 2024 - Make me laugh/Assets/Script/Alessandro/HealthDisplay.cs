@@ -14,13 +14,11 @@ public class HealthDisplay : MonoBehaviour
 
     public PlayerHealth playerHealth;
 
-    // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
         health = playerHealth.health;
