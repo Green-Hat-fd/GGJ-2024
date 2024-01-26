@@ -16,7 +16,9 @@ public class StompSuNemico : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, RimbalzoSuNemico);
         }
         
-        if(other.CompareTag("Jack"))
+        if(other.CompareTag("Jack")
+            &&
+            !other.GetComponentInParent<JackInTheBox>().LeggiSonoFuori())
         {
             Destroy(other.gameObject);
             rb.velocity = new Vector2(rb.velocity.x, RimbalzoSuNemico);
