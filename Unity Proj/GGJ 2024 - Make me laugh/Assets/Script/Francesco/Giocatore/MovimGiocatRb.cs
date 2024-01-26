@@ -35,6 +35,10 @@ public class MovimGiocatRb : MonoBehaviour
     Vector3 rot;
     [SerializeField] float velRotazione = 8.5f;
 
+    [Header("—— Feedback ——")]
+    [SerializeField] Animator giocatAnim;
+    [SerializeField] AudioSource saltoSfx;
+
 
 
     private void Awake()
