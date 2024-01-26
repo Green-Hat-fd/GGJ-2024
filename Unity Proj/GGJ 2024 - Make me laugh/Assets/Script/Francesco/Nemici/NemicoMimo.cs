@@ -26,6 +26,10 @@ public class NemicoMimo : MonoBehaviour
     [SerializeField] Collider collDaDisattivare;
     [SerializeField] Animator nemicoAnim;
 
+    const float VEL_ROTAZ_SPARO = 7,
+                VEL_ROTAZ_IDLE = 2.5f;
+
+
 
     private void Awake()
     {
@@ -38,8 +42,9 @@ public class NemicoMimo : MonoBehaviour
     {
         // Calcola la distanza tra il nemico e il giocatore
         float distGiocatore = Vector3.Distance(transform.position, giocatore.position);
+        bool giocatoreDentro = distGiocatore <= maxDistSparo;
 
-        if (distGiocatore <= maxDistSparo && sonoArrabbiato)    //Se il giocatore è abbastanza vicino...
+        if (giocatoreDentro && sonoArrabbiato)    //Se il giocatore è abbastanza vicino...
         {
             // Calcola la direzione verso il giocatore
             Vector3 direz = (giocatore.position - transform.position).normalized;
@@ -56,7 +61,7 @@ public class NemicoMimo : MonoBehaviour
             Quaternion rotFinale = Quaternion.Euler(Vector3.up * angolo);
             modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,
                                                           rotFinale,
-                                                          Time.deltaTime * 700);
+                                                          Time.deltaTime * VEL_ROTAZ_SPARO * 100);
 
             sonoGirato = modelloTr.rotation == rotFinale;
 
@@ -69,7 +74,18 @@ public class NemicoMimo : MonoBehaviour
             }
         }
 
-        if (!sonoArrabbiato)
+        if (sonoArrabbiato)
+        {
+            //Guarda davanti se e' arrabbiato
+            //e il giocatore e' fuori dal range
+            if (!giocatoreDentro)
+            {
+                modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,
+                                                              Quaternion.Euler(Vector3.up * 180f),
+                                                              Time.deltaTime * VEL_ROTAZ_IDLE * 100);
+            }
+        }
+        else
         {
             //Si mette dietro nello sfondo
             modelloTr.position = Vector3.MoveTowards(modelloTr.position,
