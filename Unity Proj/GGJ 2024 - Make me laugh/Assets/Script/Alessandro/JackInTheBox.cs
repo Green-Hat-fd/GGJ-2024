@@ -1,42 +1,148 @@
+
+/* Appena si attiva --> attiva l'animazione e attiva il box collider
+ * quando torna dentro --> disattiva il collider e ritorna dentro.
+ * 
+ * Il giocatore entra si fa danno nel collider
+ * 
+ * Se il giocatore entra nel range, si attiva subito,
+ * se no torna dentro e rimane "dormiente"
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class JackInTheBox : MonoBehaviour
 {
-    public Transform pos1, pos2;
-    public float speed;
-    public Transform startpos;
-    private Vector3 nextpos;
+    Transform giocatore;
+
+    bool sonoFuori = true;
+    bool giocatoreNelRange = false;
+
+    [SerializeField] Collider collAttacco;
+    [Range(1, 120)]
+    [SerializeField] float tempoNellaScatola = 5;
+    [Range(2, 120)]
+    [SerializeField] float tempoFuori = 5;
+    [Min(0.01f)]
+    [SerializeField] float secAnimazUscita,
+                           secAnimazRientro;
+    [Space(10)]
+    [SerializeField] float rangeAttivazione;
+
+    [Header("—— Feedback ——")]
+    [SerializeField] Animator nemicoAnim;
+    [SerializeField] AudioSource caricaSfx,
+                                 esceSfx,
+                                 entraSfx;
+    
+
 
     void Start()
     {
-        nextpos = startpos.position;
-        Debug.Log("salgo");
+        giocatore = FindObjectOfType<MovimGiocatRb>().transform;
+
+        collAttacco.enabled = false;
+
+        StartCoroutine(RicaricaTrappola());
     }
+
+
     void Update()
     {
-        if(transform.position != nextpos)
+        // Calcola la distanza tra il nemico e il giocatore
+        float distGiocatore = Vector3.Distance(transform.position, giocatore.position);
+
+        giocatoreNelRange = distGiocatore <= rangeAttivazione;
+
+        //Ogni volta che il giocatore entra nel suo range
+        //e si trova dentro, salta subito fuori
+        if(giocatoreNelRange && !sonoFuori)
         {
-            transform.position = Vector3.MoveTowards(transform.position, nextpos, speed * Time.deltaTime);
+            StopAllCoroutines();
+            StartCoroutine(AttivaTrappola());
         }
     }
+
+    IEnumerator AttivaTrappola()
+    {
+        //Feedback esce
+        esceSfx.Play();
+        //nemicoAnim.SetBool("Uscito", true);
+
+        //Esce dalla scatola
+        collAttacco.enabled = true;
+        sonoFuori = true;
+        print("Jack-Box: Fuori");
+
+
+        yield return new WaitForSeconds(tempoFuori + secAnimazUscita);   //Aspetta il tempo fuori
+
+
+        //Inizia la ricarica
+        StartCoroutine(TornaDentro());
+    }
+
+
+    IEnumerator TornaDentro()
+    {
+        //Feedback ritorna dentro
+        entraSfx.Play();
+        //nemicoAnim.SetBool("Uscito", true);
+        print("Jack-box: Ri-entra");
+
+
+        yield return new WaitForSeconds(secAnimazRientro);   //Aspetta prima di ricaricare
+
+
+        //Inizia la ricarica
+        StartCoroutine(RicaricaTrappola());
+    }
+
+    IEnumerator RicaricaTrappola()
+    {
+        //Feedback ricarica
+        caricaSfx.Play();
+
+        //Torna nella scatola
+        collAttacco.enabled = false;
+        sonoFuori = false;
+        print("Jack-box: dentro che sta caricando");
+
+
+        yield return new WaitForSeconds(tempoNellaScatola);   //Aspetta il tempo dentro
+
+
+
+        //Attiva la trappola solo
+        //se il giocatore si trova dentro l'area
+        if (giocatoreNelRange)
+        {
+            StartCoroutine(AttivaTrappola());
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.GetComponent<PlayerHealth>().TakeDamage (1);
+            other.GetComponent<PlayerHealth>().TakeDamage(1);
         }
     }
 
-    public IEnumerator ActiveTrap()
+    public bool LeggiSonoFuori() => sonoFuori;
+
+
+
+    #region EXTRA - Gizmos
+
+    private void OnDrawGizmos()
     {
-        yield return new WaitForSeconds(0.5f);
-        nextpos = pos2.position;
-        yield return new WaitUntil(()=> transform.position == nextpos);
-        yield return new WaitForSeconds (0.2f);
-        nextpos = pos1.position;
+        //Disegna l'area di azione
+        Gizmos.color = new Color(1, 0.65f, 0, 1);
+        Gizmos.DrawWireSphere(transform.position, rangeAttivazione);
     }
 
+    #endregion
 }
