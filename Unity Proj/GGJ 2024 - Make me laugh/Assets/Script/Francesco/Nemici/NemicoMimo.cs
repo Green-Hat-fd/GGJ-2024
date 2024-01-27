@@ -28,7 +28,8 @@ public class NemicoMimo : MonoBehaviour
     Transform modelloTr;
     [SerializeField] Collider collDaDisattivare;
     [SerializeField] Animator nemicoAnim;
-    [SerializeField] AudioSource sparoSfx;
+    [SerializeField] AudioSource sparoSfx_source;
+    [SerializeField] List<AudioClip> sparoSfx;
 
 
 
@@ -106,7 +107,10 @@ public class NemicoMimo : MonoBehaviour
 
         //Feedback
         nemicoAnim.SetTrigger("Sparo");
-        sparoSfx.Play();
+
+        int i_rand = Random.Range(0, sparoSfx.Count);
+        AudioClip clip = sparoSfx[i_rand];
+        sparoSfx_source.PlayOneShot(clip);
     }
 
     void AbilitaPossoSparare()

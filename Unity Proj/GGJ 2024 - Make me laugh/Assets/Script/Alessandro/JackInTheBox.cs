@@ -16,8 +16,9 @@ public class JackInTheBox : MonoBehaviour
 {
     Transform giocatore;
 
-    bool sonoFuori = true;
+    bool sonoFuori = false;
     bool giocatoreNelRange = false;
+    bool doOnce = true;
 
     [SerializeField] Collider collAttacco;
     [Range(1, 120)]
@@ -43,6 +44,9 @@ public class JackInTheBox : MonoBehaviour
         giocatore = FindObjectOfType<MovimGiocatRb>().transform;
 
         collAttacco.enabled = false;
+        sonoFuori = false;
+        giocatoreNelRange = false;
+        doOnce = true;
 
         StartCoroutine(RicaricaTrappola());
     }
@@ -57,16 +61,23 @@ public class JackInTheBox : MonoBehaviour
 
         //Ogni volta che il giocatore entra nel suo range
         //e si trova dentro, salta subito fuori
-        if(giocatoreNelRange && !sonoFuori)
+        if(giocatoreNelRange
+           &&
+           !sonoFuori
+           &&
+           doOnce)
         {
             StopAllCoroutines();
             StartCoroutine(AttivaTrappola());
+
+            doOnce = false;
         }
     }
 
     IEnumerator AttivaTrappola()
     {
         //Feedback esce
+        caricaSfx.Stop();
         esceSfx.Play();
         //nemicoAnim.SetBool("Uscito", true);
 
@@ -75,9 +86,9 @@ public class JackInTheBox : MonoBehaviour
         sonoFuori = true;
         print("Jack-Box: Fuori");
 
-
+        
         yield return new WaitForSeconds(tempoFuori + secAnimazUscita);   //Aspetta il tempo fuori
-
+        
 
         //Inizia la ricarica
         StartCoroutine(TornaDentro());
@@ -88,12 +99,16 @@ public class JackInTheBox : MonoBehaviour
     {
         //Feedback ritorna dentro
         entraSfx.Play();
-        //nemicoAnim.SetBool("Uscito", true);
+        //nemicoAnim.SetBool("Uscito", false);
+
+        //Torna nella scatola
+        collAttacco.enabled = false;
+        sonoFuori = false;
         print("Jack-box: Ri-entra");
 
-
+        
         yield return new WaitForSeconds(secAnimazRientro);   //Aspetta prima di ricaricare
-
+        
 
         //Inizia la ricarica
         StartCoroutine(RicaricaTrappola());
@@ -103,15 +118,10 @@ public class JackInTheBox : MonoBehaviour
     {
         //Feedback ricarica
         caricaSfx.Play();
-
-        //Torna nella scatola
-        collAttacco.enabled = false;
-        sonoFuori = false;
         print("Jack-box: dentro che sta caricando");
 
 
         yield return new WaitForSeconds(tempoNellaScatola);   //Aspetta il tempo dentro
-
 
 
         //Attiva la trappola solo
@@ -119,6 +129,10 @@ public class JackInTheBox : MonoBehaviour
         if (giocatoreNelRange)
         {
             StartCoroutine(AttivaTrappola());
+
+            //Ogni volta che il giocatore esce dal range
+            //resetta la possibilità di poter fare il doOnce
+            doOnce = true;
         }
     }
 

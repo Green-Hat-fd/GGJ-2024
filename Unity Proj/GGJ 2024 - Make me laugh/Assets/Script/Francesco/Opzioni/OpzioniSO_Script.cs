@@ -7,6 +7,39 @@ using UnityEngine.Audio;
 [CreateAssetMenu(menuName = "Scriptable Objects/Opzioni (S.O.)", fileName = "Opzioni_SO")]
 public class OpzioniSO_Script : ScriptableObject
 {
+    //Menu principale
+    #region Cambia scena
+
+    public void ScenaScelta(int numScena)
+    {
+        SceneManager.LoadSceneAsync(numScena);
+    }
+    public void ScenaSuccessiva()
+    {
+        int scenaOra = SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadSceneAsync(++scenaOra);
+    }
+    public void ScenaPrecedente()
+    {
+        int scenaOra = SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadSceneAsync(--scenaOra);
+    }
+
+    #endregion
+
+
+    #region Esci
+
+    public void EsciDalGioco()
+    {
+        Application.Quit();
+    }
+
+    #endregion
+
+
     //Opzioni
     #region Volume e Audio
 
