@@ -82,6 +82,10 @@ public class MovimGiocatRb : MonoBehaviour
         modello.transform.rotation = Quaternion.RotateTowards(modello.transform.rotation,
                                                               Quaternion.Euler(rot),
                                                               Time.deltaTime * velRotazione * 20);
+
+
+        //Feedback
+        giocatAnim.SetBool("Cammina", siMuove);
     }
 
     RaycastHit hitBase;
@@ -107,6 +111,9 @@ public class MovimGiocatRb : MonoBehaviour
             //Resetta la velocita' Y e applica la forza d'impulso verso l'alto
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             rb.AddForce(transform.up * potenzaSalto, ForceMode.Impulse);
+
+            //Feedback
+            giocatAnim.SetTrigger("Salto");
         }
 
 

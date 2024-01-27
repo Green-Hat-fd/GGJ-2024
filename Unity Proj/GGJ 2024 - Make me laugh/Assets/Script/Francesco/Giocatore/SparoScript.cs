@@ -9,6 +9,10 @@ public class SparoScript : MonoBehaviour
     bool possoSparare = true;
     float ricaricaAttuale = 0;
 
+    [Header("—— Feedback ——")]
+    [SerializeField] Animator giocatAnim;
+    [SerializeField] AudioSource sparoSfx;
+
 
     
     void Awake()
@@ -31,6 +35,10 @@ public class SparoScript : MonoBehaviour
         {
             collDaAttivare.GetComponent<Collider>().enabled = true;
             possoSparare = false;
+
+            //Feedback
+            giocatAnim.SetTrigger("Sparo");
+            sparoSfx.Play();
 
             print("SPARO");
         }
