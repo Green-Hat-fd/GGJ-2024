@@ -125,7 +125,7 @@ public class JackInTheBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerHealth>().TakeDamage(1);
         }
@@ -137,7 +137,7 @@ public class JackInTheBox : MonoBehaviour
 
     #region EXTRA - Gizmos
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         //Disegna l'area di azione
         Gizmos.color = new Color(1, 0.65f, 0, 1);

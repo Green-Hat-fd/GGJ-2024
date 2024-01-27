@@ -16,6 +16,9 @@ public class NemicoMimo : MonoBehaviour
     bool sonoArrabbiato = true;
     bool sonoGirato = true;
 
+    const float VEL_ROTAZ_SPARO = 7,
+                VEL_ROTAZ_IDLE = 2.5f;
+
     [Header("—— Quando ride (\"viene sconfitto\") ——")]
     [SerializeField] Transform posizQuandoRide;
     [SerializeField] float velQuandoRide = 6.5f;
@@ -25,9 +28,7 @@ public class NemicoMimo : MonoBehaviour
     Transform modelloTr;
     [SerializeField] Collider collDaDisattivare;
     [SerializeField] Animator nemicoAnim;
-
-    const float VEL_ROTAZ_SPARO = 7,
-                VEL_ROTAZ_IDLE = 2.5f;
+    [SerializeField] AudioSource sparoSfx;
 
 
 
@@ -104,7 +105,8 @@ public class NemicoMimo : MonoBehaviour
 
 
         //Feedback
-        //nemicoAnim.SetTrigger("Attacca");
+        nemicoAnim.SetTrigger("Sparo");
+        sparoSfx.Play();
     }
 
     void AbilitaPossoSparare()
@@ -121,14 +123,14 @@ public class NemicoMimo : MonoBehaviour
         collDaDisattivare.enabled = false;
 
         //Feedback della risata in loop
-        //nemicoAnim.SetTrigger("Ridi");
+        nemicoAnim.SetTrigger("Ride");
     }
 
 
 
     #region EXTRA - Gizmos
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         //Disegna l'area di azione
         Gizmos.color = new Color(0, 0.75f, 1, 1);

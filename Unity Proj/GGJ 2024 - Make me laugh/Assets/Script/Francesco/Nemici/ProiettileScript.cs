@@ -25,7 +25,8 @@ public class ProiettileScript : MonoBehaviour
         //Se ha un nemico
         if (other.CompareTag("Player"))
         {
-            //
+            //Fa danno al giocatore
+            other.GetComponent<PlayerHealth>().TakeDamage(1);
 
             print("Ahia!  -  Giocatore colpito");
         }
