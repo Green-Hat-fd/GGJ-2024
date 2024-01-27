@@ -6,39 +6,70 @@ using UnityEngine.SceneManagement;
 
 public class Pausamenu : MonoBehaviour
 {
-   public static bool GameIsPaused = false;
+    bool GameIsPaused = false;
 
-    public GameObject pauseMenuUI;
+    public Canvas pauseMenuUI;
+    GameObject pauseMenu;
+
+    [SerializeField] List<MonoBehaviour> scriptDaDisbilitare;
+
+
+    void Start()
+    {
+        pauseMenu = pauseMenuUI.gameObject;
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
-            {
-                Continua();
-            }
-            else
-            {
-                Pausa();
-            }
+            GameIsPaused = !GameIsPaused;
+            print(GameIsPaused);
+
+            MettiInPausa(GameIsPaused);
         }
     }
 
-    public void Continua()
+    void MettiInPausa(bool inPausa)
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        pauseMenu.SetActive(inPausa);
+        
+        Time.timeScale = inPausa
+                           ? 0f
+                           : 1f;
+
+        Cursor.visible = inPausa;
+        Cursor.lockState = inPausa
+                            ? CursorLockMode.None
+                            : CursorLockMode.Locked;
+
+        AttivaScript(!inPausa);
     }
 
-    void Pausa()
+    public void Riprendi_UI()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPaused = true;
+        GameIsPaused = false;
+
+        pauseMenu.SetActive(false);
+        
+        Time.timeScale = 1f;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        AttivaScript(true);
     }
+
+
+    void AttivaScript(bool sonoAttivo)
+    {
+        foreach (MonoBehaviour scr in scriptDaDisbilitare)
+        {
+            scr.enabled = sonoAttivo;
+        }
+    }
+
 
     public void Menu()
     {
