@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 48928138e9e7fe04fbc830250d0cec78
+guid: 717977647e7d99b49a775869043e59f0
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -4681345943975378988
-    second: Protag_Salto
+      74: -6306323536928247306
+    second: Dentiera_camminata
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Protag_Salto
-      takeName: Protag_Salto
+      name: Dentiera_camminata
+      takeName: Dentiera_camminata
       internalID: 0
       firstFrame: 1
-      lastFrame: 30
+      lastFrame: 160
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 48928138e9e7fe04fbc830250d0cec78
+guid: ddf818768da0f3d479c14ee58f314125
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: -4681345943975378988
-    second: Protag_Salto
+      74: 8059556183427006557
+    second: Jack_idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Protag_Salto
-      takeName: Protag_Salto
+      name: Jack_idle
+      takeName: Jack_idle
       internalID: 0
       firstFrame: 1
-      lastFrame: 30
+      lastFrame: 64
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
