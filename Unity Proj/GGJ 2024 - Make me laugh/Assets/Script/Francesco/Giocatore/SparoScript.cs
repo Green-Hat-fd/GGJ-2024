@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class SparoScript : MonoBehaviour
 {
-    [SerializeField] GameObject collDaAttivare;
-    [SerializeField] float ricaricaSec = 0.75f;
+    [SerializeField] Collider collDaAttivare;
+    [SerializeField] float ricaricaSec = 0.75f,
+                           boxAttivoSec = 0.5f;
     bool possoSparare = true;
-    float ricaricaAttuale = 0;
+    float ricaricaAttuale = 0,
+          boxAttivoAttuale = 0;
 
     [Header("—— Feedback ——")]
     [SerializeField] Animator giocatAnim;
@@ -17,9 +19,8 @@ public class SparoScript : MonoBehaviour
     
     void Awake()
     {
-        Collider coll = collDaAttivare.GetComponent<Collider>();
-        coll.isTrigger = true;
-        coll.enabled = false;
+        collDaAttivare.isTrigger = true;
+        collDaAttivare.enabled = false;
 
         ricaricaAttuale = 0;
 
@@ -27,13 +28,13 @@ public class SparoScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    
+
     void Update()
     {
         //Se preme il tasto e puo' sparare, spara
         if (Input.GetKeyDown(KeyCode.Mouse0) && possoSparare)
         {
-            collDaAttivare.GetComponent<Collider>().enabled = true;
+            collDaAttivare.enabled = true;
             possoSparare = false;
 
             //Feedback
@@ -44,18 +45,28 @@ public class SparoScript : MonoBehaviour
         }
         else
         {
-            if(ricaricaAttuale > 0.5f)
+            if (boxAttivoAttuale < boxAttivoSec
+                &&
+                collDaAttivare.enabled)
             {
-                collDaAttivare.GetComponent<Collider>().enabled = false;
+                //Aumenta il tempo quando
+                //il box deve rimanere attivo
+                boxAttivoAttuale += Time.deltaTime;
+            }
+            else
+            {
+                //Disattiva il collider dopo tot
+                collDaAttivare.enabled = false;
+                boxAttivoAttuale = 0;
             }
         }
-        
+
 
         //Quando non puo' sparare, c'e' un tempo di ricarica
         //dove il giocatore non puo' sparare
         if (!possoSparare)
         {
-            if (ricaricaAttuale > ricaricaSec)   //Se supera il tempo max
+            if (ricaricaAttuale >= ricaricaSec)   //Se supera il tempo max
             {
                 //Ripristina i valori di default
                 possoSparare = true;
@@ -67,4 +78,16 @@ public class SparoScript : MonoBehaviour
             }
         }
     }
+
+
+
+    #region EXTRA - Cambiare l'Inspector
+    
+    private void OnValidate()
+    {
+        ricaricaSec = Mathf.Clamp(ricaricaSec, 0, ricaricaSec);
+        boxAttivoSec = Mathf.Clamp(boxAttivoSec, 0, ricaricaSec);
+    }
+
+    #endregion
 }

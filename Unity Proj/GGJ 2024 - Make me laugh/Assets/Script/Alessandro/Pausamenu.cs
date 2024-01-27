@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class Pausamenu : MonoBehaviour
@@ -10,13 +11,43 @@ public class Pausamenu : MonoBehaviour
 
     public Canvas pauseMenuUI;
     GameObject pauseMenu;
+    List<AudioSource> sfxNellaScena,
+                      dialoghiNellaScena;
 
     [SerializeField] List<MonoBehaviour> scriptDaDisbilitare;
+    [SerializeField] AudioMixerGroup gruppoSfx,
+                                     gruppoDialoghi;
 
 
     void Start()
     {
         pauseMenu = pauseMenuUI.gameObject;
+
+        //Trova tutti gli AudioSource nella scena
+        //e li divide nelle categorie
+        AudioSource[] tuttiAudioSource = FindObjectsOfType<AudioSource>(true);
+        
+        sfxNellaScena = new List<AudioSource>();
+        dialoghiNellaScena = new List<AudioSource>();
+
+        for (int i = 0; i < tuttiAudioSource.Length; i++)
+        {
+            var source = tuttiAudioSource[i];
+
+            //Lo aggiunge alla lista degli SFX
+            if (source.outputAudioMixerGroup == gruppoSfx)
+            {
+                sfxNellaScena.Add(source);
+                tuttiAudioSource[i] = null;
+            }
+
+            //Lo aggiunge alla lista dei Dialoghi
+            if (source.outputAudioMixerGroup == gruppoDialoghi)
+            {
+                dialoghiNellaScena.Add(source);
+                tuttiAudioSource[i] = null;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -34,7 +65,9 @@ public class Pausamenu : MonoBehaviour
     void MettiInPausa(bool inPausa)
     {
         pauseMenu.SetActive(inPausa);
-        
+
+        SistemaSuoni(!inPausa);
+
         Time.timeScale = inPausa
                            ? 0f
                            : 1f;
@@ -51,14 +84,7 @@ public class Pausamenu : MonoBehaviour
     {
         GameIsPaused = false;
 
-        pauseMenu.SetActive(false);
-        
-        Time.timeScale = 1f;
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-
-        AttivaScript(true);
+        MettiInPausa(false);
     }
 
 
@@ -67,6 +93,21 @@ public class Pausamenu : MonoBehaviour
         foreach (MonoBehaviour scr in scriptDaDisbilitare)
         {
             scr.enabled = sonoAttivo;
+        }
+    }
+
+    void SistemaSuoni(bool daRiprodurre)
+    {
+        foreach (AudioSource audio in sfxNellaScena)
+        {
+            if (daRiprodurre)
+            {
+                audio.UnPause();
+            }
+            else
+            {
+                audio.Pause();
+            }
         }
     }
 

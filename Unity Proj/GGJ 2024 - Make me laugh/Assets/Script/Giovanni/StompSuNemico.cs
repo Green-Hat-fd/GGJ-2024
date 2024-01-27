@@ -7,6 +7,10 @@ public class StompSuNemico : MonoBehaviour
     public float RimbalzoSuNemico;
     public float RimbalzoSuTrampolino;
     public Rigidbody rb;
+
+    [Header("—— Feedback ——")]
+    [SerializeField] AudioSource boingTrampolinoSfx_source;
+    [SerializeField] List<AudioClip> boingTrampolinoSfx;
     
     void OnTriggerEnter (Collider other)
     {
@@ -20,13 +24,18 @@ public class StompSuNemico : MonoBehaviour
             &&
             !other.GetComponentInParent<JackInTheBox>().LeggiSonoFuori())
         {
-            Destroy(other.gameObject);
+            Destroy(other.transform.parent.gameObject);
             rb.velocity = new Vector2(rb.velocity.x, RimbalzoSuNemico);
         }
 
          if(other.CompareTag("Trampolino"))
         {
             rb.velocity = new Vector2(rb.velocity.x, RimbalzoSuTrampolino);
+
+            //Feedback
+            int i_rand = Random.Range(0, boingTrampolinoSfx.Count);
+            AudioClip clip = boingTrampolinoSfx[i_rand];
+            boingTrampolinoSfx_source.PlayOneShot(clip);
         }
     }
 }
