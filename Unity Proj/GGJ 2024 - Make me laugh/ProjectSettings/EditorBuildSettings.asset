@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/Finali/MenuPrinc.unity
+    guid: 3f41962e93ec1c64b9ad5a24040971ea
+  - enabled: 1
+    path: Assets/Scene/z_Test/Francesco/SampleScene.unity
+    guid: c78ba415d9b1e1041a691d7da1e60df3
+  - enabled: 1
+    path: Assets/Scene/Finali/GameOver.unity
+    guid: 9571233f502be9f4f977e45bcdc2b3e5
+  - enabled: 1
+    path: Assets/Scene/Finali/Vittoria.unity
+    guid: bd2b482b78d1fd445a095880226c9781
   m_configObjects: {}
