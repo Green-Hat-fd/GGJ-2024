@@ -114,6 +114,7 @@ public class MovimGiocatRb : MonoBehaviour
 
             //Feedback
             giocatAnim.SetTrigger("Salto");
+            saltoSfx.Play();
         }
 
 

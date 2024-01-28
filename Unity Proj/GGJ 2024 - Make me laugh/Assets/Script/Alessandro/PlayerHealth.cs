@@ -11,6 +11,9 @@ public class PlayerHealth : MonoBehaviour
     bool possoPrendereDanno = true;
     float invSecPassati = 0;
 
+    [SerializeField] AudioSource dannoSfx,
+                                 morteSfx;
+
 
     void Start()
     {
@@ -42,6 +45,9 @@ public class PlayerHealth : MonoBehaviour
         {
             health -= amount;
             possoPrendereDanno = false;
+
+            //Feedback
+            dannoSfx.Play();
         }
 
 
@@ -49,6 +55,9 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.LogError("Morto - apri scena della morte");
             SceneManager.LoadScene(2);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }

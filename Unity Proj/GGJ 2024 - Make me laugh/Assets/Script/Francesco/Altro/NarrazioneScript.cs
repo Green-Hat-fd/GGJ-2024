@@ -8,7 +8,7 @@ public class NarrazioneScript : MonoBehaviour
     [Space(10)]
     [SerializeField] AudioSource audioNarrazione;
     [SerializeField] AudioClip clipNarrazione;
-    [Range(0, 10)]
+    [Range(0, 60)]
     [SerializeField] float finitoDelaySec = 1.5f;
     [Space(10)]
     [SerializeField] TMP_Text testoDaModificare;
@@ -22,7 +22,9 @@ public class NarrazioneScript : MonoBehaviour
     {
         //Prende il tempo della narrazione
         //e gli aggiunge il delay
-        tempoSott = audioNarrazione.clip.length + finitoDelaySec;
+        tempoSott = clipNarrazione
+                     ? clipNarrazione.length + finitoDelaySec
+                     : finitoDelaySec;
 
         DisattivaSottotitoli();
     }
