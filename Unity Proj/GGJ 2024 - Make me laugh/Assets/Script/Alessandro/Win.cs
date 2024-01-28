@@ -9,6 +9,9 @@ public class Win : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             Debug.Log("Win");
             SceneManager.LoadScene(3);
         }

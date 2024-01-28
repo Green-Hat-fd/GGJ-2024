@@ -88,13 +88,13 @@ public class NemicoMimo : MonoBehaviour
             }
 
             //Feedback
-            nemicoAnim.SetBool("Sparo", giocatoreDentro);
+            nemicoAnim.SetBool("InPosizionePerSparare", giocatoreDentro);
         }
         else
         {
             //Si mette dietro nello sfondo
             modelloTr.position = Vector3.MoveTowards(modelloTr.position,
-                                                     posizQuandoRide.position,
+                                                     posizQuandoRide.position + new Vector3(-0.5f, 0, -0.7f),
                                                      Time.deltaTime * velQuandoRide);
 
             modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,
@@ -111,6 +111,10 @@ public class NemicoMimo : MonoBehaviour
         int i_rand = Random.Range(0, sparoSfx.Count);
         AudioClip clip = sparoSfx[i_rand];
         sparoSfx_source.PlayOneShot(clip);
+
+
+        //Feedback
+        nemicoAnim.SetTrigger("Sparo");
     }
 
     void AbilitaPossoSparare()
