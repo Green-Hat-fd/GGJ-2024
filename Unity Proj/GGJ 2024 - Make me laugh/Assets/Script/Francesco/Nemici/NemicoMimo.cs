@@ -88,7 +88,7 @@ public class NemicoMimo : MonoBehaviour
             }
 
             //Feedback
-            nemicoAnim.SetBool("Sparo", giocatoreDentro);
+            nemicoAnim.SetBool("InPosizionePerSparare", giocatoreDentro);
         }
         else
         {
@@ -111,6 +111,10 @@ public class NemicoMimo : MonoBehaviour
         int i_rand = Random.Range(0, sparoSfx.Count);
         AudioClip clip = sparoSfx[i_rand];
         sparoSfx_source.PlayOneShot(clip);
+
+
+        //Feedback
+        nemicoAnim.SetTrigger("Sparo");
     }
 
     void AbilitaPossoSparare()
