@@ -78,9 +78,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.8
-  m_Height: 2.2
+  m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0, y: 0.485, z: 0}
 --- !u!114 &3918580969462006429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   velQuandoRide: 6.5
   modello: {fileID: 3918580969786944184}
   collDaDisattivare: {fileID: 3918580969462006430}
-  nemicoAnim: {fileID: 0}
+  nemicoAnim: {fileID: 4438709593328110211}
   sparoSfx_source: {fileID: 6527657713154297188}
   sparoSfx:
   - {fileID: 8300000, guid: fd0212a49fa23bf4985f825b241361f5, type: 3}

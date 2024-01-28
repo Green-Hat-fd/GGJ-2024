@@ -923,7 +923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1091843330313321916
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1129,7 +1129,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 3060913528519597371, guid: a90905af0ce9dc6429de7dc365799804, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.45
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1800,7 +1800,7 @@ MonoBehaviour:
   collDaAttivare: {fileID: 2746460617871924725}
   ricaricaSec: 0.75
   boxAttivoSec: 0.5
-  giocatAnim: {fileID: 0}
+  giocatAnim: {fileID: 6078764221201404823}
   sparoSfx: {fileID: 5681401453685273900}
   bangPart: {fileID: 7161879081559072914}
 --- !u!1 &3251264927398975392
@@ -2178,7 +2178,7 @@ MonoBehaviour:
   sogliaRilevaTerreno: 0.25
   modello: {fileID: 3476031082517679135}
   velRotazione: 35
-  giocatAnim: {fileID: 0}
+  giocatAnim: {fileID: 6078764221201404823}
   saltoSfx: {fileID: 3308503764829459089}
 --- !u!114 &6157117664735250063
 MonoBehaviour:
@@ -2195,6 +2195,8 @@ MonoBehaviour:
   health: 0
   maxHealth: 4
   invSec: 2
+  dannoSfx: {fileID: 488437696572567786}
+  morteSfx: {fileID: 2768149311717184220}
 --- !u!114 &3883087333282948782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5412,7 +5414,7 @@ GameObject:
   - component: {fileID: 2746460617871924725}
   - component: {fileID: 9134973365302636517}
   m_Layer: 0
-  m_Name: Cubo (spara)
+  m_Name: Cubo (area spara)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5628,3 +5630,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2808809497362914961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007741601999608113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a114b3fd065bc14591d94824645a050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 7452633881182843251}
+  clip:
+  - {fileID: 8300000, guid: ae8b3d3de4f9d5b4ca06d2b679ff3a63, type: 3}
+  - {fileID: 8300000, guid: 8adce9b06f2639f499e7a6a3d27f4fd5, type: 3}
+  - {fileID: 8300000, guid: a1c81ebd13eb1104e82d690c2b729bac, type: 3}
+  - {fileID: 8300000, guid: 2fc387bd677b7194ab9acdafda8a354c, type: 3}
+  - {fileID: 8300000, guid: 5cc74cfaec65b6e488dcd4866766edd7, type: 3}
