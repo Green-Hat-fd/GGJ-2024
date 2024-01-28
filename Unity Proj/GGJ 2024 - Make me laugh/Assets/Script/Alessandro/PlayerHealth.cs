@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             Debug.LogError("Morto - apri scena della morte");
-            //SceneManager.LoadScene(2);
+            SceneManager.LoadScene(2);
         }
     }
 }
