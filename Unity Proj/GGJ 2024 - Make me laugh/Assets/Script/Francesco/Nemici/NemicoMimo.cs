@@ -94,7 +94,7 @@ public class NemicoMimo : MonoBehaviour
         {
             //Si mette dietro nello sfondo
             modelloTr.position = Vector3.MoveTowards(modelloTr.position,
-                                                     posizQuandoRide.position,
+                                                     posizQuandoRide.position + new Vector3(-0.5f, 0, -0.7f),
                                                      Time.deltaTime * velQuandoRide);
 
             modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,

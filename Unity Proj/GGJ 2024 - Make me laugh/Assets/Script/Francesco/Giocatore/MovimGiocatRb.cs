@@ -86,7 +86,7 @@ public class MovimGiocatRb : MonoBehaviour
 
 
         //Feedback
-        giocatAnim.SetBool("Cammina", siMuove);
+        giocatAnim.SetBool("Cammina", siMuove && siTrovaATerra);
     }
 
     void FixedUpdate()

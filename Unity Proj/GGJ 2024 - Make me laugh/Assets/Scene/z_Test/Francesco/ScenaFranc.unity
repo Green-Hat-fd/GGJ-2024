@@ -1723,7 +1723,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066736811}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4c09320c65ff41e4aa943aa45badb581, type: 2}
   m_CullingMode: 0
@@ -1742,10 +1742,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1905229155338514006, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
-      propertyPath: giocatAnim
-      value: 
-      objectReference: {fileID: 2066736817}
     - target: {fileID: 3476031082732827297, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1794,6 +1790,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8007741601999608113, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a82e9ae108770f942a0aca2a33455f9f, type: 3}
 --- !u!1001 &3918580970158442036
@@ -1803,10 +1803,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3918580968808184372, guid: a8fbb4bc83d856e4d919e9d7f7f43324, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3918580969462006419, guid: a8fbb4bc83d856e4d919e9d7f7f43324, type: 3}
       propertyPath: m_Name
       value: Mimo
@@ -1856,10 +1852,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3918580969462006429, guid: a8fbb4bc83d856e4d919e9d7f7f43324, type: 3}
-      propertyPath: nemicoAnim
-      value: 
-      objectReference: {fileID: 1476112673}
-    - target: {fileID: 3918580969462006429, guid: a8fbb4bc83d856e4d919e9d7f7f43324, type: 3}
       propertyPath: collDaDisattivare
       value: 
       objectReference: {fileID: 1666972171}
@@ -1870,6 +1862,10 @@ PrefabInstance:
     - target: {fileID: 3918580969603241112, guid: a8fbb4bc83d856e4d919e9d7f7f43324, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3918580969603241112, guid: a8fbb4bc83d856e4d919e9d7f7f43324, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8fbb4bc83d856e4d919e9d7f7f43324, type: 3}

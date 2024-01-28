@@ -1,12 +1,47 @@
 fileFormatVersion: 2
-guid: 388b15e61893c2f44ab94c9edc27ad0c
+guid: 97f9a31e6aba5a3469e4f6dac74f7bd4
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 944472962559059336
-    second: Mimi_morte
-  externalObjects: {}
+      74: -7995957214756975045
+    second: Protag_CORSA
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PM3D_Sphere3D_13
+    second: {fileID: 2100000, guid: 4b487ad06863bb647b4defdd9b410fa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PM3D_Sphere3D_6
+    second: {fileID: 2100000, guid: 4b487ad06863bb647b4defdd9b410fa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PM3D_Sphere3D_9
+    second: {fileID: 2100000, guid: 4b487ad06863bb647b4defdd9b410fa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Protagonista Merged con pistolang
+    second: {fileID: 2100000, guid: 4b487ad06863bb647b4defdd9b410fa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Protagonista Merged con pistolang1
+    second: {fileID: 2100000, guid: 4b487ad06863bb647b4defdd9b410fa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Protagonista1_10
+    second: {fileID: 2100000, guid: 4b487ad06863bb647b4defdd9b410fa1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Protagonista1_11
+    second: {fileID: 2100000, guid: 4b487ad06863bb647b4defdd9b410fa1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -38,7 +73,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 15
+    globalScale: 12
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -91,7 +126,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.14999999
+    globalScale: 0.12
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
