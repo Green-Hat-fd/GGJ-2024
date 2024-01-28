@@ -1475,7 +1475,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Souni
+  m_text: Suoni
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de46cfb79a3d4714aaec495e0c8110d7, type: 2}
   m_sharedMaterial: {fileID: 4420129254850744755, guid: de46cfb79a3d4714aaec495e0c8110d7, type: 2}
