@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scene/Finali/MenuPrinc.unity
     guid: 3f41962e93ec1c64b9ad5a24040971ea
   - enabled: 1
-    path: Assets/Scene/z_Test/Francesco/ScenaFranc.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scene/Finali/Livello.unity
+    guid: 151d849ce31f07047a77f2fd4fe9194a
   - enabled: 1
     path: Assets/Scene/Finali/GameOver.unity
     guid: 9571233f502be9f4f977e45bcdc2b3e5
