@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: ddf818768da0f3d479c14ee58f314125
+guid: 4d345e9e182fc914cad72ac538cdda51
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 8059556183427006557
-    second: Jack_inCarica
+      74: -7815848701657831954
+    second: Mimi_risata
+  - first:
+      74: 5843371065365300018
+    second: Mimi_risata (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jack_inCarica
-      takeName: Jack_idle
+      name: Mimi_risata
+      takeName: Mimi_risata
       internalID: 0
-      firstFrame: 1
-      lastFrame: 64
+      firstFrame: 50
+      lastFrame: 142
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
