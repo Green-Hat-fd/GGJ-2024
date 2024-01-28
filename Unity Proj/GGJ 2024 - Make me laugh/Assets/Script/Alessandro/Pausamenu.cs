@@ -84,7 +84,16 @@ public class Pausamenu : MonoBehaviour
     {
         GameIsPaused = false;
 
+        Time.timeScale = 1f;
+
         MettiInPausa(false);
+    }
+
+    public void Riprendi_UI_Menu()
+    {
+        GameIsPaused = false;
+
+        Time.timeScale = 1f;
     }
 
 
