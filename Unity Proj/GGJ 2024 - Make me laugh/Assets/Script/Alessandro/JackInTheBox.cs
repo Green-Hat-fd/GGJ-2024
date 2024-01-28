@@ -79,7 +79,7 @@ public class JackInTheBox : MonoBehaviour
         //Feedback esce
         caricaSfx.Stop();
         esceSfx.Play();
-        //nemicoAnim.SetBool("Uscito", true);
+        nemicoAnim.SetBool("SonoFuori", true);
 
         //Esce dalla scatola
         collAttacco.enabled = true;
@@ -99,7 +99,7 @@ public class JackInTheBox : MonoBehaviour
     {
         //Feedback ritorna dentro
         entraSfx.Play();
-        //nemicoAnim.SetBool("Uscito", false);
+        nemicoAnim.SetBool("SonoFuori", false);
 
         //Torna nella scatola
         collAttacco.enabled = false;

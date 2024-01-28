@@ -14,6 +14,7 @@ public class SparoScript : MonoBehaviour
     [Header("—— Feedback ——")]
     [SerializeField] Animator giocatAnim;
     [SerializeField] AudioSource sparoSfx;
+    [SerializeField] ParticleSystem bangPart;
 
 
     
@@ -40,6 +41,7 @@ public class SparoScript : MonoBehaviour
             //Feedback
             giocatAnim.SetTrigger("Sparo");
             sparoSfx.Play();
+            bangPart.Play();
 
             print("SPARO");
         }

@@ -26,6 +26,7 @@ public class MovimGiocatRb : MonoBehaviour
     float raggioSpherecast = 0.5f;
 
     bool siTrovaATerra = false;
+    RaycastHit hitBase;
 
     bool hoSaltato = false;
 
@@ -88,7 +89,6 @@ public class MovimGiocatRb : MonoBehaviour
         giocatAnim.SetBool("Cammina", siMuove);
     }
 
-    RaycastHit hitBase;
     void FixedUpdate()
     {
         //Calcolo se si trova a terra
@@ -119,6 +119,9 @@ public class MovimGiocatRb : MonoBehaviour
 
         //Movimento orizzontale (semplice) del giocatore
         rb.AddForce(muovi.normalized * forzaMovim * 10f, ForceMode.Force);
+
+        //Feedback
+        giocatAnim.SetBool("Sono A Terra", siTrovaATerra);
 
 
 

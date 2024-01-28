@@ -7,6 +7,7 @@ public class StompSuNemico : MonoBehaviour
     public float RimbalzoSuNemico;
     public float RimbalzoSuTrampolino;
     public Rigidbody rb;
+    public GameObject mortePart;
 
     [Header("—— Feedback ——")]
     [SerializeField] AudioSource boingTrampolinoSfx_source;
@@ -16,6 +17,7 @@ public class StompSuNemico : MonoBehaviour
     {
         if(other.CompareTag("Dentiera"))
         {
+            Instantiate(mortePart, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             rb.velocity = new Vector2(rb.velocity.x, RimbalzoSuNemico);
         }
@@ -24,6 +26,7 @@ public class StompSuNemico : MonoBehaviour
             &&
             !other.GetComponentInParent<JackInTheBox>().LeggiSonoFuori())
         {
+            Instantiate(mortePart, other.transform.position, Quaternion.identity);
             Destroy(other.transform.parent.gameObject);
             rb.velocity = new Vector2(rb.velocity.x, RimbalzoSuNemico);
         }

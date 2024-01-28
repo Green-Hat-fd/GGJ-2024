@@ -5,44 +5,59 @@ using UnityEngine.UI;
 
 public class HealthDisplay : MonoBehaviour
 {
-    public int health;
-    public int maxHealth;
+    int health;
+    int maxHealth;
 
-    public Sprite emptyHeart;
-    public Sprite fullheart;
-    public Image[] Cuore;
+    public Image vitaImg;
+    public Sprite vitaSpr_25,
+                  vitaSpr_50,
+                  vitaSpr_75,
+                  vitaSpr_full;
 
     public PlayerHealth playerHealth;
 
     void Start()
     {
-        health = maxHealth;
+        maxHealth = playerHealth.maxHealth;
     }
 
     void Update()
     {
         health = playerHealth.health;
-        maxHealth = playerHealth.maxHealth;
 
-        for (int i = 0; i < Cuore.Length; i++)
+        float health_percent = (float)health / maxHealth;
+
+
+        vitaImg.sprite = health_percent > 0.75f
+                          ? vitaSpr_full
+                          : health_percent > 0.50f
+                              ? vitaSpr_75
+                              : health_percent > 0.25f
+                                  ? vitaSpr_50
+                                  : vitaSpr_25;
+
+        /*
+        if (health_percent > 0.75f)
         {
-            if (i < health)
-            {
-                Cuore[i].sprite = fullheart;
-            }
-            else
-            {
-                Cuore[i].sprite = emptyHeart;
-            }
-            
-            if (i < maxHealth)
-            {
-                Cuore[i].enabled = true;
-            }
-            else
-            {
-                Cuore[i].enabled = false;
-            }
+            vitaImg.sprite = vitaSpr_full;
         }
+        else 
+        {
+            if (health_percent > 0.5f)
+            {
+                vitaImg.sprite = vitaSpr_75;
+            }
+            else
+            {
+                if (health_percent > 0.25f)
+                {
+                    vitaImg.sprite = vitaSpr_50;
+                } 
+                else
+                {
+                    vitaImg.sprite = vitaSpr_25;
+                }
+            }
+        }//*/
     }
 }

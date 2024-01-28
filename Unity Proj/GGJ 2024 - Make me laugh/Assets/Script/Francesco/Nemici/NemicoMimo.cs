@@ -46,46 +46,49 @@ public class NemicoMimo : MonoBehaviour
         float distGiocatore = Vector3.Distance(transform.position, giocatore.position);
         bool giocatoreDentro = distGiocatore <= maxDistSparo;
 
-        if (giocatoreDentro && sonoArrabbiato)    //Se il giocatore è abbastanza vicino...
-        {
-            // Calcola la direzione verso il giocatore
-            Vector3 direz = (giocatore.position - transform.position).normalized;
-
-            // Calcola l'angolo in radianti tra la direzione e il vettore destro (1,0)
-            float angolo = Mathf.Atan2(direz.y, direz.x) * Mathf.Rad2Deg;
-
-            // Forza l'angolo a essere 0 o 180 gradi
-            angolo = Mathf.Abs(angolo) > 90f
-                       ? -90f
-                       : 90f;
-
-            // Imposta la rotazione dell'oggetto in base all'angolo calcolato
-            Quaternion rotFinale = Quaternion.Euler(Vector3.up * angolo);
-            modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,
-                                                          rotFinale,
-                                                          Time.deltaTime * VEL_ROTAZ_SPARO * 100);
-
-            sonoGirato = modelloTr.rotation == rotFinale;
-
-            if (possoSparare && sonoGirato)
-            {
-                Spara();
-
-                possoSparare = false;
-                Invoke(nameof(AbilitaPossoSparare), cooldown);
-            }
-        }
 
         if (sonoArrabbiato)
         {
-            //Guarda davanti se e' arrabbiato
-            //e il giocatore e' fuori dal range
-            if (!giocatoreDentro)
+            if (giocatoreDentro)    //Se il giocatore è abbastanza vicino...
             {
+                // Calcola la direzione verso il giocatore
+                Vector3 direz = (giocatore.position - transform.position).normalized;
+
+                // Calcola l'angolo in radianti tra la direzione e il vettore destro (1,0)
+                float angolo = Mathf.Atan2(direz.y, direz.x) * Mathf.Rad2Deg;
+
+                // Forza l'angolo a essere 0 o 180 gradi
+                angolo = Mathf.Abs(angolo) > 90f
+                           ? -90f
+                           : 90f;
+
+                // Imposta la rotazione dell'oggetto in base all'angolo calcolato
+                Quaternion rotFinale = Quaternion.Euler(Vector3.up * angolo);
+                modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,
+                                                              rotFinale,
+                                                              Time.deltaTime * VEL_ROTAZ_SPARO * 100);
+
+                sonoGirato = modelloTr.rotation == rotFinale;
+
+                if (possoSparare && sonoGirato)
+                {
+                    Spara();
+
+                    possoSparare = false;
+                    Invoke(nameof(AbilitaPossoSparare), cooldown);
+                }
+            }
+            else
+            {
+                //Guarda davanti se e' arrabbiato
+                //e il giocatore e' fuori dal range
                 modelloTr.rotation = Quaternion.RotateTowards(modelloTr.rotation,
                                                               Quaternion.Euler(Vector3.up * 180f),
                                                               Time.deltaTime * VEL_ROTAZ_IDLE * 100);
             }
+
+            //Feedback
+            nemicoAnim.SetBool("Sparo", giocatoreDentro);
         }
         else
         {
@@ -104,9 +107,6 @@ public class NemicoMimo : MonoBehaviour
     {
         Instantiate(proiettilePrefab, puntoSparo.position, puntoSparo.rotation);
 
-
-        //Feedback
-        nemicoAnim.SetTrigger("Sparo");
 
         int i_rand = Random.Range(0, sparoSfx.Count);
         AudioClip clip = sparoSfx[i_rand];
